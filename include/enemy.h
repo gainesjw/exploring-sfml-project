@@ -25,7 +25,8 @@ namespace Enemy
             void setPosition(Args&& ... args)
             {
                 _ship.setPosition(std::forward<Args>(args) ...);
-                
+                _detectors.setPosition(std::forward<Args>(args) ...);
+
             }
 
         private:

@@ -18,9 +18,20 @@ namespace Detect
     }
 
     template<typename D>
-    std::vector<std::pair<float, D>> DetectTarget<D>::get()
+    std::vector<std::pair<float, D>> DetectTarget<D>::getDetectors()
     {
         return _sensorMap;
+    }
+
+    template<typename D>
+    void DetectTarget<D>::setPosition(const sf::Vector2f& offset)
+    {
+        for(auto& pair : _sensorMap)
+        {
+            D& detector = pair.second;
+            detector.setPosition(offset);
+            
+        }
     }
 
     template<typename D>

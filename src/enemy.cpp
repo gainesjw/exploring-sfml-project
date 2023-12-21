@@ -8,10 +8,10 @@ namespace Enemy
         _ship.setTexture(Configuration::Configuration::textures.get(Configuration::Configuration::Textures::Enemy));
         _ship.setOrigin(49.5,37.5);
 
-        sf::Vector2f length(600, 400);
+        sf::Vector2f length(0, -100);
         sf::Vector2f end;
         end = _ship.getPosition() + length;
-        std::pair vision(end, _ship.getPosition());
+        std::pair vision(_ship.getPosition(), end);
 
         Detect::Detect forwardDetector(vision);
         _detectors.attach(0, forwardDetector);
@@ -27,7 +27,7 @@ namespace Enemy
     {
         std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-        const int choiceList[3] = {-1, 0, 1};
+        const int choiceList[3] = {0, 0, -1};
         const int moveList[2] = {0, 1};
         int randRotation = rand() % 3;
         int randMovement = rand() % 2;
@@ -54,7 +54,7 @@ namespace Enemy
     void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         target.draw(_ship, states);
-        target.draw(_detectors.get()[0].second.get(), states);
+        target.draw(_detectors.getDetectors()[0].second.getDetector(), states);
     }
 
     Detect::DetectTarget<Detect::Detect> Enemy::_detectors;
