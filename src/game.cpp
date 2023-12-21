@@ -5,7 +5,7 @@ namespace Game
     Game::Game() : _window(sf::VideoMode(1200, 800), "project_002")
     {
         _player.setPosition(600, 400);
-        _enemy.setPosition(sf::Vector2f(600, 400));
+        _enemy.setPosition(600, 400);
     }
 
     void Game::run(int minimumFPS)

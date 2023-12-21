@@ -35,6 +35,17 @@ namespace Detect
     }
 
     template<typename D>
+    void DetectTarget<D>::setPosition(float x, float y)
+    {
+        for(auto& pair : _sensorMap)
+        {
+            D& detector = pair.second;
+            detector.setPosition(x, y);
+            
+        }
+    }
+
+    template<typename D>
     void DetectTarget<D>::move(const sf::Vector2f& offset)
     {
         for(auto& pair : _sensorMap)

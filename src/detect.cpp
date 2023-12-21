@@ -38,6 +38,19 @@ namespace Detect
 
     }
 
+    void Detect::setPosition(float x, float y)
+    {
+        sf::Vector2f startPoint = _detectLine[0].position;
+        sf::Vector2f endPoint = _detectLine[1].position;
+        sf::Vector2f relativeEndPoint = endPoint - startPoint;
+
+        _detectLine[0].position.x = x;
+        _detectLine[0].position.y = y;
+        _detectLine[1].position.x = x + relativeEndPoint.x;
+        _detectLine[1].position.y = y + relativeEndPoint.y;
+
+    }
+
     void Detect::rotate(const float& degree)
     {   
         float radians = degree * (M_PI / 180);

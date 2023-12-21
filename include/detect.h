@@ -15,10 +15,14 @@ namespace Detect
             Detect(const std::pair<sf::Vector2f, sf::Vector2f>& line);
 
             bool operator==(const Detect& other) const;
-            sf::VertexArray getDetector();
+            
             void setPosition(const sf::Vector2f& point);
+            void setPosition(float x, float y);
+
             void move(const sf::Vector2f& offset);
             void rotate(const float& angle);
+
+            sf::VertexArray getDetector();
 
         private:
             template<typename> friend class DetectTarget;
@@ -60,11 +64,14 @@ namespace Detect
             void attach(const float& degree, const D& detector);
             void detach(const float& degree);
 
-            std::vector<std::pair<float, D>> getDetectors();
+            
             void setPosition(const sf::Vector2f& offset);
+            void setPosition(float x, float y);
+
             void move(const sf::Vector2f& offset);
             void rotate(const float& degree);
 
+            std::vector<std::pair<float, D>> getDetectors();
             //bool sense(const sf::Rect& object) const;
 
         private:
