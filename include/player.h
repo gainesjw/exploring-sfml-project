@@ -6,7 +6,8 @@
 
 namespace Player {
 
-    class Player : public sf::Drawable, public Action::ActionTarget<int> 
+    class Player : public sf::Drawable
+                   ,public Action::ActionTarget<int> 
     {
         public:
             Player(const Player&) = delete;

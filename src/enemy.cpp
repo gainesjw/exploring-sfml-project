@@ -1,12 +1,20 @@
 #include "enemy.h"
-
+#include <iostream>
 namespace Enemy
 {
     Enemy::Enemy() :    _isMoving(false)
                         ,_rotation(0)
-    {
+    {   
         _ship.setTexture(Configuration::Configuration::textures.get(Configuration::Configuration::Textures::Enemy));
         _ship.setOrigin(49.5,37.5);
+
+        sf::Vector2f length(600, 400);
+        sf::Vector2f end;
+        end = _ship.getPosition() + length;
+        std::pair vision(end, _ship.getPosition());
+
+        Detect::Detect forwardDetector(vision);
+        _detectors.attach(0, forwardDetector);
     }
 
     void Enemy::processEvents()
@@ -20,11 +28,12 @@ namespace Enemy
         std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
         const int choiceList[3] = {-1, 0, 1};
+        const int moveList[2] = {0, 1};
         int randRotation = rand() % 3;
-        int randMovement = rand() % 3;
+        int randMovement = rand() % 2;
 
         _rotation += choiceList[randRotation];
-        _isMoving += choiceList[randMovement];
+        _isMoving += moveList[randMovement];
 
         float seconds = deltaTime.asSeconds();
         if(_rotation != 0)
@@ -38,10 +47,14 @@ namespace Enemy
             _velocity += sf::Vector2f(std::cos(angle), std::sin(angle)) * 60.f * seconds;
         }
         _ship.move(seconds * _velocity);
+        _detectors.move(seconds * _velocity);
     }
 
     void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         target.draw(_ship, states);
+        target.draw(_detectors.get()[0].second.get(), states);
     }
+
+    Detect::DetectTarget<Detect::Detect> Enemy::_detectors;
 }

@@ -3,6 +3,8 @@
 
 #include "action.h"
 #include "resourcemanager.h"
+#include "detect.h"
+#include "enemy.h"
 
 namespace Configuration 
 {

@@ -3,8 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include "configuration.h"
+#include "detect.h"
 #include <ctime>
 #include <cstdlib>
+#include <utility>
 
 namespace Enemy 
 {
@@ -19,6 +21,12 @@ namespace Enemy
             void processEvents();
             void update(sf::Time deltaTime);
 
+            template<typename ... Args>
+            void setPosition(Args&& ... args)
+            {
+                _ship.setPosition(std::forward<Args>(args) ...);
+                
+            }
 
         private:
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -28,6 +36,8 @@ namespace Enemy
 
             bool _isMoving;
             int _rotation;
+
+            static Detect::DetectTarget<Detect::Detect> _detectors;
     };
 }
 

@@ -23,4 +23,5 @@ namespace Configuration
         player_inputs.map(PlayerInputs::Right, Action::Action(sf::Keyboard::Right));
         player_inputs.map(PlayerInputs::Left, Action::Action(sf::Keyboard::Left));
     }
+
 }

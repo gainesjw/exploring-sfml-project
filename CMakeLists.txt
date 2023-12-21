@@ -14,6 +14,7 @@ include(CTest)
 enable_testing()
 
 set(SOURCES
+    src/detect.cpp
     src/action.cpp
     src/configuration.cpp
     src/enemy.cpp
