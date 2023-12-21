@@ -40,6 +40,7 @@ namespace Enemy
         {
             float angle = _rotation * 180 * seconds;
             _ship.rotate(angle);
+            _detectors.rotate(angle);
         }
         if(_isMoving)
         {

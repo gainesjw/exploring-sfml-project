@@ -17,7 +17,7 @@ namespace Detect
             bool operator==(const Detect& other) const;
             sf::VertexArray get();
             void move(const sf::Vector2f& offset);
-            // void rotate(const float& offset);
+            void rotate(const float& angle);
 
         private:
             template<typename> friend class DetectTarget;
@@ -61,7 +61,7 @@ namespace Detect
 
             std::vector<std::pair<float, D>> get();
             void move(const sf::Vector2f& offset);
-            // void rotate(const float& offset);
+            void rotate(const float& degree);
 
             //bool sense(const sf::Rect& object) const;
 

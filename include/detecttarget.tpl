@@ -33,4 +33,15 @@ namespace Detect
             
         }
     }
+
+    template<typename D>
+    void DetectTarget<D>::rotate(const float& degree)
+    {
+        for(auto& pair : _sensorMap)
+        {
+            D& detector = pair.second;
+            detector.rotate(degree);
+            
+        }
+    }
 }

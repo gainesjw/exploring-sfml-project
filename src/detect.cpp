@@ -26,4 +26,13 @@ namespace Detect
         _detectLine[1].position += offset;
 
     }
+
+    void Detect::rotate(const float& degree)
+    {   
+
+        //float magnitude = std::sqrt(_detectLine[1].position * _detectLine[1].position + _detectLine[0].position * _detectLine[0].position);
+        //_detectLine[1].position.x += std::sin(degree) * magnitude;
+        //_detectLine[1].position.y += std::cos(degree) * magnitude;
+
+    }
 }
