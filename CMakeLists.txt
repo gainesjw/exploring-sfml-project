@@ -14,6 +14,7 @@ include(CTest)
 enable_testing()
 
 set(SOURCES
+    src/entity.cpp
     src/detect.cpp
     src/action.cpp
     src/configuration.cpp
