@@ -2,12 +2,13 @@
 
 namespace Player
 {
-    Player::Player() :  ActionTarget(Configuration::Configuration::player_inputs)
+    Player::Player(World& world) :  Entity::Entity(Configuration::Configuration::Textures::Player, world)
+                        ,ActionTarget(Configuration::Configuration::player_inputs)
                         ,_isMoving(false)
                         ,_rotation(0)
     {
-        _ship.setTexture(Configuration::Configuration::textures.get(Configuration::Configuration::Textures::Player));
-        _ship.setOrigin(49.5,37.5);
+        _sprite.setTexture(Configuration::Configuration::textures.get(Configuration::Configuration::Textures::Player));
+        _sprite.setOrigin(49.5,37.5);
 
         bind(PlayerInputs::Up, [this](const sf::Event&)
         {
@@ -38,19 +39,14 @@ namespace Player
         if(_rotation != 0)
         {
             float angle = _rotation * 180 * seconds;
-            _ship.rotate(angle);
+            _sprite.rotate(angle);
         }
         if(_isMoving)
         {
-            float angle = _ship.getRotation() / 180 * M_PI - M_PI / 2;
+            float angle = _sprite.getRotation() / 180 * M_PI - M_PI / 2;
             _velocity += sf::Vector2f(std::cos(angle), std::sin(angle)) * 60.f * seconds;
         }
-        _ship.move(seconds * _velocity);
-    }
-
-    void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
-    {
-        target.draw(_ship, states);
+        _sprite.move(seconds * _velocity);
     }
 
     Action::ActionMap<int> Player::_playerInputs;

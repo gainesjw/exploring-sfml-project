@@ -2,8 +2,7 @@
 #define __GAME_H__
 
 #include <SFML/Graphics.hpp>
-#include "player.h"
-#include "enemy.h"
+#include "world.h"
 
 namespace Game
 {
@@ -23,9 +22,7 @@ namespace Game
             void render();
 
             sf::RenderWindow _window;
-            Player::Player _player;
-            Enemy::Enemy _enemy;
-
+            World::World _world;
     };
 } 
 
