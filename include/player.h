@@ -14,7 +14,7 @@ namespace Player {
             Player(const Player&) = delete;
             Player& operator=(const Player&) = delete;
 
-            Player(Entity& world);
+            Player(World::World& world);
 
             void processEvents();
             virtual void update(sf::Time deltaTime);

@@ -12,14 +12,14 @@ namespace World
         clear();
     }
 
-    World::update(sf::Time deltaTime)
+    void World::update(sf::Time deltaTime)
     {
         if(_entitiesTmp.size() > 0)
             _entities.merge(_entitiesTmp);
 
-        for(Entity* entity_ptr : _entities)
+        for(Entity::Entity* entity_ptr : _entities)
         {
-            Entity& entity = *entity_ptr;
+            Entity::Entity& entity = *entity_ptr;
 
             entity.update(deltaTime);
 
@@ -28,7 +28,7 @@ namespace World
             if(pos.x < 0)
             {
                 pos.x = _x;
-                pos.y = _y * pos.y;
+                pos.y = _y - pos.y;
             }
             else if (pos.x > _x)
             {
@@ -53,18 +53,23 @@ namespace World
         //}
     }
 
-    void World::add(Entity* entity)
+    void World::add(Entity::Entity* entity)
     {
         _entitiesTmp.push_back(entity); 
     }
 
     void World::clear()
     {
-        for(Entity* entity : _entities)
+        for(Entity::Entity* entity : _entities)
             delete entity;
 
-        for(Entity* entity : _entitiesTmp)
+        for(Entity::Entity* entity : _entitiesTmp)
             delete entity;
+    }
+
+    int World::size()
+    {
+        return _entities.size() + _entitiesTmp.size();
     }
 
     int World::getX() const
@@ -77,14 +82,14 @@ namespace World
         return _y;
     }
 
-    const std::list<Entity*> World::getEntities() const
+    const std::list<Entity::Entity*> World::getEntities() const
     {
         return _entities;
     }
 
     void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
-        for(Entity* entity : _entities)
+        for(Entity::Entity* entity : _entities)
             target.draw(*entity, states);
     }
 }

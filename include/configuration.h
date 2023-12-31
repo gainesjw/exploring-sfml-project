@@ -4,10 +4,15 @@
 #include "action.h"
 #include "resourcemanager.h"
 #include "detect.h"
-#include "enemy.h"
+
+namespace Player 
+{
+    class Player;
+}
 
 namespace Configuration 
 {
+
     class Configuration
     {
         public:
@@ -21,6 +26,8 @@ namespace Configuration
 
             enum PlayerInputs : int {Up,Left,Right};
             static Action::ActionMap<int> player_inputs;
+
+            static Player::Player* player;
 
             static void initialize();
 

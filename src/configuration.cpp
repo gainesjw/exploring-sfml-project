@@ -5,6 +5,8 @@ namespace Configuration
     ResourceManager::ResourceManager<sf::Texture, int> Configuration::textures;
     Action::ActionMap<int> Configuration::player_inputs;
 
+    Player::Player* Configuration::Configuration::player = nullptr;
+
     void Configuration::initialize()
     {
         initTextures();

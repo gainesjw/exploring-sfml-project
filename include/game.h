@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "world.h"
+#include "configuration.h"
+#include "player.h"
+#include "enemy.h"
 
 namespace Game
 {
@@ -12,7 +15,7 @@ namespace Game
             Game(const Game&) = delete;
             Game& operator=(const Game&) = delete;
 
-            Game();
+            Game(int x=1600, int y=900);
 
             void run(int minimumFPS);
 

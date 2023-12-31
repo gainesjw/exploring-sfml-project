@@ -12,7 +12,7 @@ namespace Action
         bool res = false;
         for(auto& pair : _eventsPoll)
         {
-            if(_actionMap.get(pair.first))
+            if(_actionMap.get(pair.first) == event)
             {
                 pair.second(event);
                 res = true;

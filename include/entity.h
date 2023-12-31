@@ -4,15 +4,19 @@
 #include <SFML/Graphics.hpp>
 #include "configuration.h"
 
-namespace Entity
+namespace World
 {
     class World;
+}
+
+namespace Entity
+{
     class Entity : public sf::Drawable
     {
         public:
         Entity(const Entity&) = delete;
         Entity& operator=(const Entity&) = delete;
-        Entity(Configuration::Configuration::Textures texture_id, World& world);
+        Entity(Configuration::Configuration::Textures texture_id, World::World& world);
         virtual ~Entity();
 
         template<typename ... Args>
@@ -30,7 +34,7 @@ namespace Entity
 
             sf::Vector2f    _velocity;
             sf::Sprite      _sprite;
-            World& _world;
+            World::World& _world;
             bool _alive;
 
         private:

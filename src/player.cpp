@@ -2,14 +2,11 @@
 
 namespace Player
 {
-    Player::Player(World& world) :  Entity::Entity(Configuration::Configuration::Textures::Player, world)
+    Player::Player(World::World& world) :  Entity::Entity(Configuration::Configuration::Textures::Player, world)
                         ,ActionTarget(Configuration::Configuration::player_inputs)
                         ,_isMoving(false)
                         ,_rotation(0)
     {
-        _sprite.setTexture(Configuration::Configuration::textures.get(Configuration::Configuration::Textures::Player));
-        _sprite.setOrigin(49.5,37.5);
-
         bind(PlayerInputs::Up, [this](const sf::Event&)
         {
             _isMoving = true;
