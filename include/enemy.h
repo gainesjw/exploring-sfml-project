@@ -20,13 +20,13 @@ namespace Enemy
             Enemy(World::World& world);
 
             void processEvents();
-            virtual void update(sf::Time deltaTime);
+            virtual void update(sf::Time deltaTime) override;
 
         private:
             bool _isMoving;
             int _rotation;
 
-            //void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+            void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
             static Detect::DetectTarget<Detect::Detect> _detectors;
     };

@@ -6,13 +6,29 @@ namespace Enemy
                         ,_isMoving(false)
                         ,_rotation(0)
     {   
-        sf::Vector2f length(0, -100);
-        sf::Vector2f end;
-        end = _sprite.getPosition() + length;
-        std::pair vision(_sprite.getPosition(), end);
+        sf::Vector2f _frontLength(0, -100);
+        sf::Vector2f _frontEnd;
+        _frontEnd = _sprite.getPosition() + _frontLength;
+        std::pair _frontVision(_sprite.getPosition(), _frontEnd);
 
-        Detect::Detect forwardDetector(vision);
-        _detectors.attach(0, forwardDetector);
+        Detect::Detect _frontDetector(_frontVision);
+        _detectors.attach(0, _frontDetector);
+
+        sf::Vector2f _leftLength(-70.7, -70.7);
+        sf::Vector2f _leftEnd;
+        _leftEnd = _sprite.getPosition() + _leftLength;
+        std::pair _leftVision(_sprite.getPosition(), _leftEnd);
+
+        Detect::Detect _leftDetector(_leftVision);
+        _detectors.attach(45, _leftDetector);
+
+        sf::Vector2f _rightLength(70.7, -70.7);
+        sf::Vector2f _rightEnd;
+        _rightEnd = _sprite.getPosition() + _rightLength;
+        std::pair _rightVision(_sprite.getPosition(), _rightEnd);
+
+        Detect::Detect _rightDetector(_rightVision);
+        _detectors.attach(-45, _rightDetector);
     }
 
     void Enemy::processEvents()
@@ -23,15 +39,15 @@ namespace Enemy
 
     void Enemy::update(sf::Time deltaTime)
     {
-        //std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
         const int choiceList[3] = {0, 0, 1};
         const int moveList[2] = {0, 1};
         int randRotation = rand() % 3;
         int randMovement = rand() % 2;
 
-        _rotation = choiceList[2];
-        _isMoving = moveList[0];
+        _rotation = choiceList[randRotation];
+        _isMoving = moveList[randMovement];
 
         //std::cout << _rotation << std::endl;
 
@@ -51,14 +67,17 @@ namespace Enemy
         _detectors.move(seconds * _velocity);
     }
 
-    //void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const override
-    //{
-    //    target.draw(_sprite, states);
-        //for(Detect::Detect& _detector : _detectors)
-        //{
-        //      target.draw(_detector, states);
-        //} 
-    //}
+    void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
+    {
+        target.draw(_sprite, states);
+
+        std::vector<std::pair<float, Detect::Detect>> _detectorList = _detectors.getDetectors();
+        for(std::pair<float, Detect::Detect>& _detectorPair : _detectorList)
+        {
+            Detect::Detect _detector = _detectorPair.second;
+            target.draw(_detector.getDetector(), states);
+        } 
+    }
 
     Detect::DetectTarget<Detect::Detect> Enemy::_detectors;
 }
