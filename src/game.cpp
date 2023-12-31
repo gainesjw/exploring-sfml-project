@@ -55,7 +55,7 @@ namespace Game
                 _world.add(Configuration::Configuration::player);
             }
 
-        if(_world.size() <= 1)
+        if(_world.size() <= 3)
             {
             Enemy::Enemy* enemy = new Enemy::Enemy(_world);
             //do{

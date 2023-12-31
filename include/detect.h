@@ -71,7 +71,7 @@ namespace Detect
             void move(const sf::Vector2f& offset);
             void rotate(const float& degree);
 
-            std::vector<std::pair<float, D>> getDetectors();
+            std::vector<std::pair<float, D>> getDetectors() const;
             //bool sense(const sf::Rect& object) const;
 
         private:

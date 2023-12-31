@@ -33,7 +33,7 @@ namespace Entity
             friend class Player;
             friend class Enemy;
 
-            static Detect::DetectTarget<Detect::Detect> _detectors;
+            Detect::DetectTarget<Detect::Detect> _detectors;
             sf::Vector2f    _velocity;
             sf::Sprite      _sprite;
             World::World& _world;

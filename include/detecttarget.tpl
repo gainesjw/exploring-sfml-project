@@ -18,7 +18,7 @@ namespace Detect
     }
 
     template<typename D>
-    std::vector<std::pair<float, D>> DetectTarget<D>::getDetectors()
+    std::vector<std::pair<float, D>> DetectTarget<D>::getDetectors() const
     {
         return _sensorMap;
     }

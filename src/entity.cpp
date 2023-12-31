@@ -30,6 +30,4 @@ namespace Entity
             target.draw(_detector.getDetector(), states);
         } 
     }
-
-    Detect::DetectTarget<Detect::Detect> Entity::_detectors;
 }
