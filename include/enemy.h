@@ -5,7 +5,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <utility>
-#include "detect.h"
+//#include "detect.h"
 #include "configuration.h"
 #include "entity.h"
 
@@ -28,7 +28,7 @@ namespace Enemy
 
             void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-            static Detect::DetectTarget<Detect::Detect> _detectors;
+            //static Detect::DetectTarget<Detect::Detect> _detectors;
     };
 }
 
