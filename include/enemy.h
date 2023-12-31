@@ -25,10 +25,6 @@ namespace Enemy
         private:
             bool _isMoving;
             int _rotation;
-
-            void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-
-            //static Detect::DetectTarget<Detect::Detect> _detectors;
     };
 }
 
