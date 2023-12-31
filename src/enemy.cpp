@@ -66,18 +66,4 @@ namespace Enemy
         _sprite.move(seconds * _velocity);
         _detectors.move(seconds * _velocity);
     }
-
-    void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
-    {
-        target.draw(_sprite, states);
-
-        //std::vector<std::pair<float, Detect::Detect>> _detectorList = _detectors.getDetectors();
-        //for(std::pair<float, Detect::Detect>& _detectorPair : _detectorList)
-        //{
-        //    Detect::Detect _detector = _detectorPair.second;
-        //    target.draw(_detector.getDetector(), states);
-        //} 
-    }
-
-    //Detect::DetectTarget<Detect::Detect> Enemy::_detectors;
 }

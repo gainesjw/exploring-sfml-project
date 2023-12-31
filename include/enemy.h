@@ -5,7 +5,6 @@
 #include <ctime>
 #include <cstdlib>
 #include <utility>
-//#include "detect.h"
 #include "configuration.h"
 #include "entity.h"
 
