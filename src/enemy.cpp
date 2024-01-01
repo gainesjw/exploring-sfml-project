@@ -1,5 +1,6 @@
 #include "enemy.h"
 #include "iostream"
+#include "random.h"
 namespace Enemy
 {
     Enemy::Enemy(World::World& world) : Entity::Entity(Configuration::Configuration::Textures::Enemy, world)
@@ -39,12 +40,10 @@ namespace Enemy
 
     void Enemy::update(sf::Time deltaTime)
     {
-        std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
-        const int choiceList[3] = {0, 0, 1};
+        const int choiceList[3] = {-1, 0, 1};
         const int moveList[2] = {0, 1};
-        int randRotation = rand() % 3;
-        int randMovement = rand() % 2;
+        int randRotation = Random::random(0, 2);
+        int randMovement = Random::random(0, 1);
 
         _rotation = choiceList[randRotation];
         _isMoving = moveList[randMovement];

@@ -1,4 +1,5 @@
 #include "game.h"
+#include "random.h"
 
 namespace Game
 {
@@ -47,6 +48,8 @@ namespace Game
 
     void Game::update(sf::Time deltaTime)
     {
+        Random::rand_init();
+
         _world.update(deltaTime);
         if(Configuration::Configuration::player == nullptr)
             {
@@ -55,12 +58,10 @@ namespace Game
                 _world.add(Configuration::Configuration::player);
             }
 
-        if(_world.size() <= 3)
+        if(_world.size() <= 50)
             {
             Enemy::Enemy* enemy = new Enemy::Enemy(_world);
-            //do{
-                //enemy->setPosition(random(0.f,(float)_world.getX()),random(0.f,(float)_world.getY()));
-            //};
+            enemy->setPosition(Random::random(0.f,(float)_world.getX()),Random::random(0.f,(float)_world.getY()));
             _world.add(enemy);
             }
     }
