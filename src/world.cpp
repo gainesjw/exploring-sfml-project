@@ -51,6 +51,17 @@ namespace World
         //{
         //    Entity
         //}
+
+        //if(_entities.size() >= 5)
+        //{
+        //    for(auto it = _entities.begin(); it != _entities.end();)
+        //    {
+        //        delete *it;
+        //        it = _entities.erase(it);
+        //        ++it;
+        //    }
+        //}
+
     }
 
     void World::add(Entity::Entity* entity)
@@ -62,9 +73,11 @@ namespace World
     {
         for(Entity::Entity* entity : _entities)
             delete entity;
+        _entities.clear();
 
         for(Entity::Entity* entity : _entitiesTmp)
             delete entity;
+        _entities.clear();
     }
 
     int World::size()

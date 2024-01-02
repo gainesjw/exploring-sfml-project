@@ -1,5 +1,6 @@
 #include "game.h"
 #include "random.h"
+#include "entity.h"
 
 namespace Game
 {
@@ -51,19 +52,20 @@ namespace Game
         Random::rand_init();
 
         _world.update(deltaTime);
-        if(Configuration::Configuration::player == nullptr)
-            {
-                Configuration::Configuration::player = new Player::Player(_world);
-                Configuration::Configuration::player->setPosition(_world.getX()/2,_world.getY()/2);
-                _world.add(Configuration::Configuration::player);
-            }
 
-        if(_world.size() <= 50)
-            {
+        if(_world.size() <= 5)
+        {
             Enemy::Enemy* enemy = new Enemy::Enemy(_world);
             enemy->setPosition(Random::random(0.f,(float)_world.getX()),Random::random(0.f,(float)_world.getY()));
             _world.add(enemy);
-            }
+        }
+
+        if(Configuration::Configuration::player == nullptr)
+        {
+            Configuration::Configuration::player = new Player::Player(_world);
+            Configuration::Configuration::player->setPosition(_world.getX()/2,_world.getY()/2);
+            _world.add(Configuration::Configuration::player);
+        }
     }
 
     void Game::render()

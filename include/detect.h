@@ -13,7 +13,8 @@ namespace Detect
     {
         public:
             Detect(const std::pair<sf::Vector2f, sf::Vector2f>& line);
-
+            ~Detect();
+            
             bool operator==(const Detect& other) const;
             
             void setPosition(const sf::Vector2f& point);

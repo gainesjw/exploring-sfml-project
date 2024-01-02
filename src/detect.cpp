@@ -10,6 +10,11 @@ namespace Detect
         _detectLine[1].position = line.second;
     }
 
+    Detect::~Detect()
+    {
+        
+    }
+
     bool Detect::operator==(const Detect& other) const
     {
         return _active == other._active;
