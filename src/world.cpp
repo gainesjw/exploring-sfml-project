@@ -46,12 +46,10 @@ namespace World
 
         // Run entity sensing here
 
-        //const auto end = _entities.end();
-        //for(auto it_i = _entities.begin(); it_i != end; ++it_i)
-        //{
-        //    Entity
-        //}
+        //DetectManager <-
 
+        // Testing object deletion
+        
         //if(_entities.size() >= 5)
         //{
         //    for(auto it = _entities.begin(); it != _entities.end();)

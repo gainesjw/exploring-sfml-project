@@ -1,6 +1,5 @@
 #include "game.h"
 #include "random.h"
-#include "entity.h"
 
 namespace Game
 {

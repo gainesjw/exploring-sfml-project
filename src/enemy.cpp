@@ -1,5 +1,4 @@
 #include "enemy.h"
-#include "iostream"
 #include "random.h"
 namespace Enemy
 {
@@ -47,8 +46,6 @@ namespace Enemy
 
         _rotation = choiceList[randRotation];
         _isMoving = moveList[randMovement];
-
-        //std::cout << _rotation << std::endl;
 
         float seconds = deltaTime.asSeconds();
         if(_rotation != 0)

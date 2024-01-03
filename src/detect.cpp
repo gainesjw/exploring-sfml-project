@@ -12,7 +12,7 @@ namespace Detect
 
     Detect::~Detect()
     {
-        
+
     }
 
     bool Detect::operator==(const Detect& other) const
@@ -66,5 +66,27 @@ namespace Detect
         _detectLine[1].position.x = (xLength * std::cos(radians) - yLength * std::sin(radians)) + _detectLine[0].position.x;
         _detectLine[1].position.y = (yLength * std::cos(radians) + xLength * std::sin(radians)) + _detectLine[0].position.y;
 
+    }
+
+    void DetectManager::update(std::list<Entity::Entity*> _entities)
+    {
+        // Update detectors for each object
+        const auto end = _entities.end();
+        for(auto entityA = _entities.begin(); entityA != end; ++entityA)
+        {
+            for(auto entityB = _entities.begin(); entityA != end || entityA != entityB; ++entityB)
+            {
+                
+                printf("OK");
+            }
+        }
+    }
+
+    void DetectManager::sense(Entity::Entity& targetEntity, Entity::Entity& foreignEntity)
+    {
+        //for(Detect& detector : targetEntity)
+        //{
+        //    printf("OK");
+        //}
     }
 }

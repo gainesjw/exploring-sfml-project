@@ -29,6 +29,7 @@ namespace Entity
 
             virtual void update(sf::Time) = 0;
             const sf::Vector2f& getPosition() const;
+            std::vector<std::pair<float, Detect::Detect>> getDetectors() const;
 
         protected:
             friend class Player;

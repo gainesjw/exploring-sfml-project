@@ -7,11 +7,6 @@
 #include "configuration.h"
 #include "entity.h"
 
-//namespace Entity
-//{
-//    class Entity;
-//}
-
 namespace World
 {
 

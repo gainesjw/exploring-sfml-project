@@ -19,6 +19,11 @@ namespace Entity
         return _sprite.getPosition();
     }
 
+    std::vector<std::pair<float, Detect::Detect>> Entity::getDetectors() const
+    {
+        return _detectors.getDetectors();
+    }
+
     void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
     {
         target.draw(_sprite, states);

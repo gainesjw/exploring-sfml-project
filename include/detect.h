@@ -7,6 +7,11 @@
 #include <unordered_map>
 #include <utility>
 
+namespace Entity
+{
+    class Entity;
+}
+
 namespace Detect
 {
     class Detect
@@ -14,7 +19,7 @@ namespace Detect
         public:
             Detect(const std::pair<sf::Vector2f, sf::Vector2f>& line);
             ~Detect();
-            
+
             bool operator==(const Detect& other) const;
             
             void setPosition(const sf::Vector2f& point);
@@ -32,25 +37,16 @@ namespace Detect
             
 
     };
-    
-    template<typename A>
     class DetectManager 
     {
         public:
-            DetectManager(const DetectManager<A>&) = delete;
-            DetectManager<A>& operator=(const DetectManager<A>&) = delete;
+            DetectManager(const DetectManager&) = delete;
+            DetectManager& operator=(const DetectManager&) = delete;
+            DetectManager() = delete;
 
-            DetectManager() = default;
-
-            void map(const A& agent);
-            void unmap(const int& agentlisting);
-
+            void update(std::list<Entity::Entity*> _entities);
+            void sense(Entity::Entity& targetEntity, Entity::Entity& foreignEntity);
             //const Detect& get(const int& agentlisting);
-            //void update();
-
-        private:
-            std::list<A> _agents;
-
     };
 
     template<typename D>
@@ -65,7 +61,6 @@ namespace Detect
             void attach(const float& degree, const D& detector);
             void detach(const float& degree);
 
-            
             void setPosition(const sf::Vector2f& offset);
             void setPosition(float x, float y);
 
@@ -80,7 +75,6 @@ namespace Detect
     };
 }
 
-#include "detectmanager.tpl"
 #include "detecttarget.tpl"
 
 #endif
