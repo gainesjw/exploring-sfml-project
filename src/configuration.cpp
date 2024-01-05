@@ -17,7 +17,7 @@ namespace Configuration
     void Configuration::initTextures()
     {
         std::string exeDirectory = GetExecutableDirectory();
-        //std::cout << "Executable path: " << exeDirectory << std::endl;
+        std::cout << "Executable path: " << exeDirectory << std::endl;
 
         textures.load(Textures::Player, exeDirectory + "/media/Player/Ship.png");
         textures.load(Textures::Enemy,  exeDirectory + "/media/Enemy/Ship.png");
@@ -30,16 +30,26 @@ namespace Configuration
         player_inputs.map(PlayerInputs::Left, Action::Action(sf::Keyboard::Left));
     }
 
-    std::string GetExecutableDirectory()
-    {
+    std::string GetExecutableDirectory() {
         char fullPath[PATH_MAX];
         uint32_t size = sizeof(fullPath);
         if (_NSGetExecutablePath(fullPath, &size) == 0) {
             // Extract the directory from the full path
             std::string exePath = fullPath;
             size_t lastSlash = exePath.find_last_of("/");
-            return exePath.substr(0, lastSlash);
+
+            // Find the position of the previous slash before the last slash
+            size_t previousSlash = exePath.find_last_of("/", lastSlash - 1);
+
+            // Check if both slashes were found
+            if (lastSlash != std::string::npos && previousSlash != std::string::npos) {
+                return exePath.substr(0, previousSlash);
+            } else {
+                // If not found, return the original directory
+                return exePath.substr(0, lastSlash);
+            }
         }
+
         return "";
     }
 
