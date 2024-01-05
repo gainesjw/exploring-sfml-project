@@ -33,6 +33,7 @@ target_compile_features(project_002 PRIVATE cxx_std_17)
 target_include_directories(project_002 PRIVATE ${PROJECT_SOURCE_DIR}/include)
 file(COPY ${PROJECT_SOURCE_DIR}/media DESTINATION ${CMAKE_BINARY_DIR}/bin)
 
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)

@@ -4,11 +4,15 @@
 #include "action.h"
 #include "resourcemanager.h"
 #include "detect.h"
+#include <mach-o/dyld.h>
+#include <iostream>
 
 namespace Player 
 {
     class Player;
 }
+
+namespace fs = std::filesystem;
 
 namespace Configuration 
 {
@@ -35,6 +39,8 @@ namespace Configuration
             static void initTextures();
             static void initPlayerInputs();
     };
+
+    std::string GetExecutableDirectory();
 }
 
 #endif
