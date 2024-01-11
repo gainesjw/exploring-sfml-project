@@ -37,17 +37,6 @@ namespace Detect
             
 
     };
-    class DetectManager 
-    {
-        public:
-            DetectManager(const DetectManager&) = delete;
-            DetectManager& operator=(const DetectManager&) = delete;
-            DetectManager() = delete;
-
-            void update(std::list<Entity::Entity*> _entities);
-            void sense(Entity::Entity& targetEntity, Entity::Entity& foreignEntity);
-            //const Detect& get(const int& agentlisting);
-    };
 
     template<typename D>
     class DetectTarget

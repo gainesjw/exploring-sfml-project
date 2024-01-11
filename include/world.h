@@ -6,6 +6,7 @@
 #include <memory>
 #include "configuration.h"
 #include "entity.h"
+#include "sensing.h"
 
 namespace World
 {

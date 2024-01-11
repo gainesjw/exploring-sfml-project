@@ -5,7 +5,8 @@
 #include <memory> // unique_ptr
 #include "stdexcept" // runtime_error
 #include "action.h"
-
+#include <utility>
+#include <unordered_map>
 
 namespace ResourceManager
 {

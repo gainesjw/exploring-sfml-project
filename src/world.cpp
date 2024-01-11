@@ -46,7 +46,8 @@ namespace World
 
         // Run entity sensing here
 
-        //DetectManager <-
+        Sensing::SensorManager SensorManager;
+        SensorManager.update(_entities);
 
         // Testing object deletion
         

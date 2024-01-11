@@ -12,8 +12,6 @@ namespace Player
     class Player;
 }
 
-namespace fs = std::filesystem;
-
 namespace Configuration 
 {
 

@@ -20,6 +20,7 @@ enable_testing()
 
 # Source files
 set(SOURCES
+    src/sensing.cpp
     src/world.cpp
     src/entity.cpp
     src/detect.cpp
@@ -58,9 +59,6 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 # Include directories
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
-# Copy media directory during build
-file(COPY ${PROJECT_SOURCE_DIR}/media DESTINATION ${CMAKE_BINARY_DIR}/bin)
-
 # CPack settings
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
@@ -68,4 +66,4 @@ include(CPack)
 
 # Install target
 install(TARGETS ${PROJECT_NAME} BUNDLE DESTINATION . COMPONENT Runtime)
-
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)

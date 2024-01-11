@@ -29,6 +29,9 @@
     <key>LSMinimumSystemVersion</key>
     <string>10.12</string>
     
+    <key>NSKeyboardUsageDescription</key>
+    <string>We need access to keyboard input for...</string>
+
     <!-- Add any other keys your application needs -->
 </dict>
 </plist>
