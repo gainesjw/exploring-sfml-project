@@ -19,6 +19,11 @@ namespace Entity
         return _sprite.getPosition();
     }
 
+    const sf::FloatRect& Entity::getBounds() const
+    {
+        return _sprite.getGlobalBounds();
+    }
+
     std::vector<std::pair<float, Detect::Detect>> Entity::getDetectors() const
     {
         return _detectors.getDetectors();

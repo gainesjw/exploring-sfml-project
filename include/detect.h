@@ -29,13 +29,13 @@ namespace Detect
             void rotate(const float& angle);
 
             sf::VertexArray getDetector();
+            void setActivity(bool indicator);
+            bool getActivity();
 
         private:
             template<typename> friend class DetectTarget;
-            int _active = 0;
+            bool _active = 0;
             sf::VertexArray _detectLine;
-            
-
     };
 
     template<typename D>

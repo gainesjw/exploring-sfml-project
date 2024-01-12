@@ -20,11 +20,6 @@ namespace Detect
         return _active == other._active;
     }
 
-    sf::VertexArray Detect::Detect::getDetector()
-    {
-        return _detectLine;
-    }
-
     void Detect::move(const sf::Vector2f& offset)
     {
         _detectLine[0].position += offset;
@@ -66,5 +61,20 @@ namespace Detect
         _detectLine[1].position.x = (xLength * std::cos(radians) - yLength * std::sin(radians)) + _detectLine[0].position.x;
         _detectLine[1].position.y = (yLength * std::cos(radians) + xLength * std::sin(radians)) + _detectLine[0].position.y;
 
+    }
+
+    sf::VertexArray Detect::Detect::getDetector()
+    {
+        return _detectLine;
+    }
+
+    void Detect::setActivity(bool indicator)
+    {
+        _active = indicator;
+    }
+
+    bool Detect::getActivity()
+    {
+        return _active;
     }
 }

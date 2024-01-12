@@ -39,7 +39,7 @@ namespace Enemy
 
     void Enemy::update(sf::Time deltaTime)
     {
-        const int choiceList[3] = {-1, 0, 1};
+        /*const int choiceList[3] = {-1, 0, 1};
         const int moveList[2] = {0, 1};
         int randRotation = Random::random(0, 2);
         int randMovement = Random::random(0, 1);
@@ -60,6 +60,6 @@ namespace Enemy
             _velocity += sf::Vector2f(std::cos(angle), std::sin(angle)) * 60.f * seconds;
         }
         _sprite.move(seconds * _velocity);
-        _detectors.move(seconds * _velocity);
+        _detectors.move(seconds * _velocity);*/
     }
 }
