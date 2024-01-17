@@ -14,7 +14,8 @@ namespace Sensing
             SensorManager() = default;
 
             void update(std::list<Entity::Entity*> _entities);
-            void sense(Entity::Entity& targetEntity, Entity::Entity& foreignEntity);
+            bool sense(Entity::Entity& targetEntity, Entity::Entity& foreignEntity);
+            void senseReset(Entity::Entity& targetEntity);
             //const Detect& get(const int& agentlisting);
     };
 }
