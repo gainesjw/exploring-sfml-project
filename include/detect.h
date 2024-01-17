@@ -32,6 +32,8 @@ namespace Detect
             void setActivity(bool indicator);
             bool getActivity();
 
+            void setColor();
+
         private:
             template<typename> friend class DetectTarget;
             bool _active = 0;

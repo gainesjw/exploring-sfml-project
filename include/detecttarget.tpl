@@ -29,7 +29,7 @@ namespace Detect
         for(auto& pair : _sensorMap)
         {
             D& detector = pair.second;
-            detector.setPosition(offset);
+            detector->setPosition(offset);
             
         }
     }
@@ -40,7 +40,7 @@ namespace Detect
         for(auto& pair : _sensorMap)
         {
             D& detector = pair.second;
-            detector.setPosition(x, y);
+            detector->setPosition(x, y);
             
         }
     }
@@ -51,7 +51,7 @@ namespace Detect
         for(auto& pair : _sensorMap)
         {
             D& detector = pair.second;
-            detector.move(offset);
+            detector->move(offset);
             
         }
     }
@@ -62,7 +62,7 @@ namespace Detect
         for(auto& pair : _sensorMap)
         {
             D& detector = pair.second;
-            detector.rotate(degree);
+            detector->rotate(degree);
             
         }
     }

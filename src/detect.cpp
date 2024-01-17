@@ -77,4 +77,17 @@ namespace Detect
     {
         return _active;
     }
+
+    void Detect::setColor()
+    {
+        if(_active == 1)
+        {
+            _detectLine[0].color = sf::Color::Red;
+            _detectLine[1].color = sf::Color::Red;
+        } else
+        {
+            _detectLine[0].color = sf::Color::White;
+            _detectLine[1].color = sf::Color::White;
+        }
+    }
 }

@@ -30,13 +30,13 @@ namespace Entity
             virtual void update(sf::Time) = 0;
             const sf::Vector2f& getPosition() const;
             const sf::FloatRect& getBounds() const;
-            std::vector<std::pair<float, Detect::Detect>> getDetectors() const;
+            std::vector<std::pair<float, Detect::Detect*>> getDetectors() const;
 
         protected:
             friend class Player;
             friend class Enemy;
 
-            Detect::DetectTarget<Detect::Detect> _detectors;
+            Detect::DetectTarget<Detect::Detect*> _detectors;
             sf::Vector2f    _velocity;
             sf::Sprite      _sprite;
             World::World& _world;

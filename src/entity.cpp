@@ -24,7 +24,7 @@ namespace Entity
         return _sprite.getGlobalBounds();
     }
 
-    std::vector<std::pair<float, Detect::Detect>> Entity::getDetectors() const
+    std::vector<std::pair<float, Detect::Detect*>> Entity::getDetectors() const
     {
         return _detectors.getDetectors();
     }
@@ -33,10 +33,10 @@ namespace Entity
     {
         target.draw(_sprite, states);
 
-        std::vector<std::pair<float, Detect::Detect>> _detectorList = _detectors.getDetectors();
-        for(std::pair<float, Detect::Detect>& _detectorPair : _detectorList)
+        std::vector<std::pair<float, Detect::Detect*>> _detectorList = _detectors.getDetectors();
+        for(std::pair<float, Detect::Detect*> _detectorPair : _detectorList)
         {
-            Detect::Detect _detector = _detectorPair.second;
+            Detect::Detect& _detector = *_detectorPair.second;
             target.draw(_detector.getDetector(), states);
         } 
     }

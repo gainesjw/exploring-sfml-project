@@ -22,29 +22,29 @@ namespace Sensing
 
     void SensorManager::sense(Entity::Entity& targetEntity, Entity::Entity& foreignEntity)
     {
-        std::vector<std::pair<float, Detect::Detect>> _tgtsensorMap = targetEntity.getDetectors();
+        std::vector<std::pair<float, Detect::Detect*>> _tgtsensorMap = targetEntity.getDetectors();
 
-        for(std::pair<float, Detect::Detect> _tgtsensor : _tgtsensorMap)
+        for(std::pair<float, Detect::Detect*> _tgtsensor : _tgtsensorMap)
         {
-            Detect::Detect _tgtdetect = _tgtsensor.second;
+            Detect::Detect& _tgtdetect = *_tgtsensor.second;
             sf::VertexArray _tgtdetector = _tgtdetect.getDetector();
             sf::FloatRect _tgtdetectShape = _tgtdetector.getBounds();
             sf::FloatRect _frnShape = foreignEntity.getBounds();
-
+            _tgtdetect.setColor();
             if(_tgtdetectShape.intersects(_frnShape))
             {
                 _tgtdetect.setActivity(1);
-                _tgtdetector[0].color = sf::Color::Red;
-                _tgtdetector[1].color = sf::Color::Red;
-                std::cout << "Detector Bounds: Left = " << _tgtdetectShape.left
+                /*std::cout << "Detector Bounds: Left = " << _tgtdetectShape.left
                 << ", Top = " << _tgtdetectShape.top
                 << ", Width = " << _tgtdetectShape.width
                 << ", Height = " << _tgtdetectShape.height
                 << " : Foreign Bounds: Left = " << _frnShape.left
                 << ", Top = " << _frnShape.top
                 << ", Width = " << _frnShape.width
-                << ", Height = " << _frnShape.height << std::endl;
+                << ", Height = " << _frnShape.height << std::endl;*/
+                break;
             }   
+            //_tgtdetect.setActivity(0);
 
             //std::cout << _tgtdetect.getActivity() << std::endl;
         }
