@@ -17,7 +17,6 @@ namespace Sensing
 
                 bool _senseObjFlag = sense(entityA, entityB);
                 if(_senseObjFlag == 1) _senseFlag = _senseObjFlag;
-                //printf("OK\n");
             }
 
             if(_senseFlag == 0) senseReset(entityA);
@@ -32,15 +31,17 @@ namespace Sensing
         {
             Detect::Detect& _tgtdetect = *_tgtsensor.second;
             sf::VertexArray _tgtdetector = _tgtdetect.getDetector();
+
             sf::FloatRect _tgtdetectShape = _tgtdetector.getBounds();
             sf::FloatRect _frnShape = foreignEntity.getBounds();
-            
 
             if(_tgtdetectShape.intersects(_frnShape))
             {
                 _senseFlag = 1;
                 _tgtdetect.setActivity(1);
                 _tgtdetect.setColor();
+
+                // Tracking objects in space
                 /*std::cout << "Detector Bounds: Left = " << _tgtdetectShape.left
                 << ", Top = " << _tgtdetectShape.top
                 << ", Width = " << _tgtdetectShape.width
@@ -49,10 +50,7 @@ namespace Sensing
                 << ", Top = " << _frnShape.top
                 << ", Width = " << _frnShape.width
                 << ", Height = " << _frnShape.height << std::endl;*/
-                //break;
             }
-            //_tgtdetect.setActivity(0);
-            //std::cout << _tgtdetect.getActivity() << std::endl;
         }
         return _senseFlag;
     }
