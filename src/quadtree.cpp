@@ -32,7 +32,7 @@ namespace Quadtree
     {
         if(_entity == NULL) return;
 
-        if(!inBoundary(_entity.getPosition())) return;
+        if(!inBoundary(_entity->getPosition())) return;
 
         if( abs(topLeft.x - botRight.x) <= 1 && abs(topLeft.y - botRight.y) <= 1)
         {
