@@ -7,6 +7,7 @@
 #include "configuration.h"
 #include "entity.h"
 #include "sensing.h"
+#include "quadtree.h"
 
 namespace World
 {

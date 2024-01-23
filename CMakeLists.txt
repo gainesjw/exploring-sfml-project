@@ -20,6 +20,7 @@ enable_testing()
 
 # Source files
 set(SOURCES
+    src/quadtree.cpp
     src/sensing.cpp
     src/world.cpp
     src/entity.cpp

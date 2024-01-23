@@ -46,8 +46,16 @@ namespace World
 
         // Run entity sensing here
 
-        Sensing::SensorManager SensorManager;
-        SensorManager.update(_entities);
+        Quadtree::Quadtree SensorManager(sf::Vector2f(0, 0), sf::Vector2f(_x, _y));
+
+        for(Entity::Entity* entity_ptr : _entities)
+        {   
+            SensorManager.insert(entity_ptr);
+        }
+        //SensorManager.update();
+
+        //Sensing::SensorManager SensorManager;
+        //SensorManager.update(_entities);
 
         // Testing object deletion
         
