@@ -52,7 +52,7 @@ namespace Game
 
         _world.update(deltaTime);
 
-        if(_world.size() <= 5)
+        if(_world.size() <= 500)
         {
             Enemy::Enemy* enemy = new Enemy::Enemy(_world);
             enemy->setPosition(Random::random(0.f,(float)_world.getX()),Random::random(0.f,(float)_world.getY()));

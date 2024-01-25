@@ -15,7 +15,7 @@ namespace Game
             Game(const Game&) = delete;
             Game& operator=(const Game&) = delete;
 
-            Game(int x=1600, int y=900);
+            Game(int x=3200, int y=3200);
 
             void run(int minimumFPS);
 

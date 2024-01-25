@@ -36,6 +36,8 @@ namespace World
             std::list<Entity::Entity*> _entities;
             std::list<Entity::Entity*> _entitiesTmp;
 
+            Quadtree::Quadtree _SensorManager;
+
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
             const int _x;

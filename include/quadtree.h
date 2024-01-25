@@ -9,13 +9,13 @@
 
 namespace Quadtree
 {
-    class Quadtree
+    class Quadtree : public sf::Drawable
     {
         public:
             Quadtree();
             Quadtree(sf::Vector2f topL, sf::Vector2f botR);
 
-            int objMaxSize = 100;
+            int objMaxSize = 5;
             std::list<Entity::Entity*> _entities;
 
             sf::Vector2f topLeft;
@@ -25,12 +25,17 @@ namespace Quadtree
             //_entities* search(Entity::Entity _entity);
             bool inBoundary(Entity::Entity* _entity);
             void update();
+            void reset();
+
+            virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
         private:
             Quadtree* tlQuadtree;
             Quadtree* trQuadtree;
             Quadtree* blQuadtree;
             Quadtree* brQuadtree;
+
+            sf::VertexArray _shape;
 
     };
 }
