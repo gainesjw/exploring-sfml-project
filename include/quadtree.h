@@ -15,14 +15,12 @@ namespace Quadtree
             Quadtree();
             Quadtree(sf::Vector2f topL, sf::Vector2f botR);
 
-            int objMaxSize = 5;
             std::list<Entity::Entity*> _entities;
 
             sf::Vector2f topLeft;
             sf::Vector2f botRight;
 
             void insert(Entity::Entity* _entity);
-            //_entities* search(Entity::Entity _entity);
             bool inBoundary(Entity::Entity* _entity);
             void update();
             void reset();

@@ -5,14 +5,15 @@ namespace Quadtree
     Quadtree::Quadtree()
     {
         topLeft = sf::Vector2f(0.f, 0.f);
-        botRight = sf::Vector2f(3200.f, 3200.f);
+        botRight = sf::Vector2f(1600.f, 1600.f);
 
         _shape.setPrimitiveType(sf::LineStrip);
-        _shape.resize(4);
+        _shape.resize(5);
         _shape[0].position = topLeft;
         _shape[1].position = sf::Vector2f(botRight.x, topLeft.y);
         _shape[2].position = botRight;
         _shape[3].position = sf::Vector2f(topLeft.x, botRight.y);
+        _shape[4].position = topLeft;
 
         tlQuadtree = NULL;
         trQuadtree = NULL;
@@ -26,11 +27,12 @@ namespace Quadtree
         botRight = botR;
 
         _shape.setPrimitiveType(sf::LineStrip);
-        _shape.resize(4);
-        _shape[0].position = topL;
+        _shape.resize(5);
+        _shape[0].position = topLeft;
         _shape[1].position = sf::Vector2f(botR.x, topL.y);
-        _shape[2].position = botR;
+        _shape[2].position = botRight;
         _shape[3].position = sf::Vector2f(topL.x, botR.y);
+        _shape[4].position = topLeft;
 
         tlQuadtree = NULL;
         trQuadtree = NULL;
@@ -40,14 +42,12 @@ namespace Quadtree
 
     void Quadtree::insert(Entity::Entity* _entity)
     {
-        //printf("1\n");
-        if(_entity == NULL) return;
-        //printf("2\n");
-        if(!inBoundary(_entity)) return;
-        //printf("3\n");
-        if( abs(topLeft.x - botRight.x) <= 25 && abs(topLeft.y - botRight.y) <= 25) return;
 
-        if(_entities.size() <= objMaxSize)
+        if(_entity == NULL) return;
+
+        if(!inBoundary(_entity)) return;
+
+        if( abs(topLeft.x - botRight.x) <= 400 && abs(topLeft.y - botRight.y) <= 400)
         {
             _entities.push_back(_entity);
             return;
@@ -109,12 +109,6 @@ namespace Quadtree
         //printf("Sensing entities!\n");
         Sensing::SensorManager SensorManager;
         SensorManager.update(_entities);
-
-        /*if(!_entities.empty()) //return
-        {
-             _entities.clear();
-            //printf("Flush List!\n");
-        }*/
     }
 
     void Quadtree::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -146,10 +140,7 @@ namespace Quadtree
         brQuadtree = NULL;
 
         if(_entities.size() > 0)
-            printf("lots\n");
-            /*for (auto entityPtr : _entities) 
-            {
-                delete entityPtr;
-            }*/
+            //printf("lots\n");
+            _entities.clear();
     }
 }
