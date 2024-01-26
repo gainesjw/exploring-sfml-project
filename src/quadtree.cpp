@@ -7,13 +7,7 @@ namespace Quadtree
         topLeft = sf::Vector2f(0.f, 0.f);
         botRight = sf::Vector2f(1600.f, 1600.f);
 
-        _shape.setPrimitiveType(sf::LineStrip);
-        _shape.resize(5);
-        _shape[0].position = topLeft;
-        _shape[1].position = sf::Vector2f(botRight.x, topLeft.y);
-        _shape[2].position = botRight;
-        _shape[3].position = sf::Vector2f(topLeft.x, botRight.y);
-        _shape[4].position = topLeft;
+        setShape();
 
         tlQuadtree = NULL;
         trQuadtree = NULL;
@@ -26,13 +20,7 @@ namespace Quadtree
         topLeft = topL;
         botRight = botR;
 
-        _shape.setPrimitiveType(sf::LineStrip);
-        _shape.resize(5);
-        _shape[0].position = topLeft;
-        _shape[1].position = sf::Vector2f(botR.x, topL.y);
-        _shape[2].position = botRight;
-        _shape[3].position = sf::Vector2f(topL.x, botR.y);
-        _shape[4].position = topLeft;
+        setShape();
 
         tlQuadtree = NULL;
         trQuadtree = NULL;
@@ -99,6 +87,17 @@ namespace Quadtree
                 && _entity->getPosition().y >= topLeft.y && _entity->getPosition().y <= botRight.y);
     }
 
+    void Quadtree::setShape()
+    {
+        _shape.setPrimitiveType(sf::LineStrip);
+        _shape.resize(5);
+        _shape[0].position = topLeft;
+        _shape[1].position = sf::Vector2f(botRight.x, topLeft.y);
+        _shape[2].position = botRight;
+        _shape[3].position = sf::Vector2f(topLeft.x, botRight.y);
+        _shape[4].position = topLeft;
+    }
+
     void Quadtree::update()
     {
         if(tlQuadtree != NULL) tlQuadtree->update();
@@ -106,7 +105,6 @@ namespace Quadtree
         if(blQuadtree != NULL) blQuadtree->update();
         if(brQuadtree != NULL) brQuadtree->update();
 
-        //printf("Sensing entities!\n");
         Sensing::SensorManager SensorManager;
         SensorManager.update(_entities);
     }
@@ -140,7 +138,6 @@ namespace Quadtree
         brQuadtree = NULL;
 
         if(_entities.size() > 0)
-            //printf("lots\n");
             _entities.clear();
     }
 }

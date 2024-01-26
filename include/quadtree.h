@@ -22,6 +22,7 @@ namespace Quadtree
 
             void insert(Entity::Entity* _entity);
             bool inBoundary(Entity::Entity* _entity);
+            void setShape();
             void update();
             void reset();
 
